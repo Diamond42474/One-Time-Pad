@@ -1,8 +1,8 @@
 import java.io.FileWriter;
 
 public class Filer {
-	class settings{
-		static final String dir = "Key.txt";
+	static class settings{
+		final static String dir = System.getProperty("user.home") + "/Desktop/key.txt";
 	}
 	public static void process(String key, int block_size) {
 		String out = "";
