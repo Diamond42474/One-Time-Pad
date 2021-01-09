@@ -30,10 +30,14 @@ public class Randomizer {
 	}
 	private static String key(int size) {
 		String key = "";
+		int x = MouseInfo.getPointerInfo().getLocation().x;
+    	int y = MouseInfo.getPointerInfo().getLocation().y;
 		while(key.length()<size) {
+			 x = MouseInfo.getPointerInfo().getLocation().x;
+	    	 y = MouseInfo.getPointerInfo().getLocation().y;
 			key+=number();
 			try {
-				Thread.sleep(settings.min_time+((MouseInfo.getPointerInfo().getLocation().x/settings.x_bounds)*settings.max_time));
+				Thread.sleep(settings.min_time+((x/settings.x_bounds)*settings.max_time));
 			} catch (HeadlessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

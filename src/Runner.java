@@ -1,8 +1,20 @@
+import java.util.Scanner;
+
 public class Runner {
-	static final int message_size = 100*2;
-	static final int block_size = 4;
-	static final int padding_blocks = 5*2;
+	static int message_size = 100;
+	static int block_size = 4;
+	static int padding_blocks = 0;
+	private static Scanner scan;
 	public static void main(String[] args) {
+		scan = new Scanner(System.in);
+		System.out.println("Message Size: ");
+		message_size = Integer.parseInt(scan.nextLine());
+		System.out.println("Block Size: ");
+		block_size = Integer.parseInt(scan.nextLine());
+		System.out.println("Padding Ammount: ");
+		padding_blocks = Integer.parseInt(scan.nextLine());
+		System.out.println("Press Enter to Generate Key: ");
+		scan.nextLine();
 		Randomizer.generate(message_size, block_size, padding_blocks);
 	}
 
