@@ -1,9 +1,6 @@
 import java.io.FileWriter;
 
 public class Filer {
-	static class settings{
-		final static String dir = System.getProperty("user.home") + "/Desktop/key.txt";
-	}
 	public static void process(String key, int block_size) {
 		Statistics.run(key);
 		String out = "";
@@ -17,7 +14,7 @@ public class Filer {
 	}
 	private static void write_file(String key) {
 		try {
-			FileWriter myWriter = new FileWriter(settings.dir);
+			FileWriter myWriter = new FileWriter(Setup.settings.dir+"key.txt");
 		     myWriter.write(key);
 		     myWriter.close();
 		}catch(Exception e) {

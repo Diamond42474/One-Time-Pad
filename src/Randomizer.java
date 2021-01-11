@@ -18,6 +18,7 @@ public class Randomizer {
 		}
 		int key_size = message_size + (padding_blocks*block_size);
 		String raw_key = key(key_size);
+		Setup.settings.key=raw_key;
 		Filer.process(raw_key,block_size);
 	}
 	private static long number() {
