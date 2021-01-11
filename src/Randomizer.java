@@ -21,35 +21,34 @@ public class Randomizer {
 		Filer.process(raw_key,block_size);
 	}
 	private static long number() {
-		long time = System.currentTimeMillis();
+		//long time = System.currentTimeMillis();
     	int x = MouseInfo.getPointerInfo().getLocation().x;
     	int y = MouseInfo.getPointerInfo().getLocation().y;
-    	String test = ((1+time)*(1+x)*(1+y))+"";
-    	test = test.substring(10);
-    	return  (long) ((Integer.parseInt(test))*(Math.PI*1000000));
+    	try {
+			Thread.sleep(settings.min_time+((x/settings.x_bounds)*settings.max_time));
+		} catch (HeadlessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	long time = System.nanoTime();
+    	time = Long.parseLong(Long.toString(time).substring(6));
+    	//System.out.println("Time: "+time);
+    	String out = ((1+time)*(1+x)*(1+y))+"";
+    	//System.out.println("Number: "+out);
+    	return  (long) (Long.parseLong(out));
 	}
 	private static String key(int size) {
 		String key = "";
-		int x = MouseInfo.getPointerInfo().getLocation().x;
-    	int y = MouseInfo.getPointerInfo().getLocation().y;
 		while(key.length()<size) {
-			 x = MouseInfo.getPointerInfo().getLocation().x;
-	    	 y = MouseInfo.getPointerInfo().getLocation().y;
 			key+=number();
-			try {
-				Thread.sleep(settings.min_time+((x/settings.x_bounds)*settings.max_time));
-			} catch (HeadlessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			System.out.println("Processing: "+(int)((double)(key.length())/size*100)+"%");
 		}
 		if(key.length()>size) {
 			key=key.substring(key.length()-size);
 		}
-		System.out.println("Key Length: "+key.length());
 		return key;
 	}
 }
