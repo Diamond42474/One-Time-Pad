@@ -1,14 +1,16 @@
 import java.awt.HeadlessException;
 import java.awt.MouseInfo;
+import java.awt.Toolkit;
 
 public class Randomizer {
-	class settings {
-		static final int x_bounds = 1919;
+	static class settings {
+		static int x_bounds = 1919;
 		static final int min_time = 100;
 		static final int max_time = 199;
 	}
 
 	public static void generate(int message_size, int block_size, int padding_blocks) {
+		settings.x_bounds = Toolkit.getDefaultToolkit().getScreenSize().width;
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {
