@@ -6,8 +6,10 @@ public class Setup {
 		static int block_size = 0;
 		static int padding_blocks = 0;
 		static String key = "";
+		static String message = "";
+		static String enc_message = "";
 
-		static String dir = System.getProperty("user.home");
+		static String dir = System.getProperty("user.home") + "/Desktop/";
 	}
 
 	private static Scanner scan;
@@ -38,21 +40,37 @@ public class Setup {
 	}
 
 	private static void generate() {
-
+		System.out.println("Message Size: ");
+		Setup.settings.message_size = Integer.parseInt(scan.nextLine()) * 2;
+		System.out.println("Block Size: ");
+		Setup.settings.block_size = Integer.parseInt(scan.nextLine());
+		System.out.println("Padding Ammount: ");
+		Setup.settings.padding_blocks = Integer.parseInt(scan.nextLine()) * 2;
+		System.out.println("Press Enter & Start Moving The Mouse: ");
+		scan.nextLine();
+		Randomizer.generate(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
 	}
 
 	private static void encrypt() {
 		System.out.println("Message: ");
-		Setup.settings.message_size = scan.nextLine().length() * 2;
+		Setup.settings.message = scan.nextLine();
+		Setup.settings.message_size = Setup.settings.message.length() * 2;
+
 		System.out.println("Block Size: ");
 		Setup.settings.block_size = Integer.parseInt(scan.nextLine());
 		System.out.println("Padding Ammount: ");
 		Setup.settings.padding_blocks = Integer.parseInt(scan.nextLine());
 		System.out.println("Press Enter & Start Moving The Mouse: ");
 		scan.nextLine();
+		Randomizer.generate(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
+		Encry_Decry.encrypt(Setup.settings.key, Setup.settings.message);
 	}
 
 	private static void decrypt() {
-
+		System.out.println("Encrypted Message: ");
+		Setup.settings.message = scan.nextLine();
+		System.out.println("Key: ");
+		Setup.settings.key = scan.nextLine();
+		Encry_Decry.decrypt(Setup.settings.key, Setup.settings.message);
 	}
 }
