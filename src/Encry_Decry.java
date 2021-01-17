@@ -5,8 +5,9 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class Encry_Decry {
-	private static HashMap<Integer,String> alphabet = new HashMap<Integer, String>();
-	private static HashMap<String,Integer> ialphabet = new HashMap<String, Integer>();
+	private static HashMap<Integer, String> alphabet = new HashMap<Integer, String>();
+	private static HashMap<String, Integer> ialphabet = new HashMap<String, Integer>();
+
 	public static void Setup() {
 		alphabet.put(1, "A");
 		alphabet.put(2, "B");
@@ -48,26 +49,59 @@ public class Encry_Decry {
 		alphabet.put(37, "7");
 		alphabet.put(38, "8");
 		alphabet.put(39, "9");
+		alphabet.put(40, ",");
 		List<Integer> keys = new ArrayList<>(alphabet.keySet());
-		for(int i = 0;i<keys.size();i++) {
+		for (int i = 0; i < keys.size(); i++) {
 			ialphabet.put(alphabet.get(keys.get(i)), keys.get(i));
 		}
 	}
+
 	public static String encrypt(String key, String message) {
 		String out = "";
-		while(message.length()/2<key.length()) {
-			message=message+" ";
+		message = message.toUpperCase();
+		while (message.length() / 2 < key.length()) {
+			message = message + " ";
 		}
-		for(int i = 0;i<key.length();i+=2) {
-			System.out.println("Length: "+key.length());
-			int charK = Integer.parseInt(key.substring(i, i+2));
-			int charM = ialphabet.get(message.charAt(i)+"");
-			System.out.println("Charm: "+charM);
+		for (int i = 0; i < key.length() / 2; i++) {
+			// System.out.println("Length: "+key.length());
+			int charK = Integer.parseInt(key.substring(i * 2, (i * 2) + 2));
+			int charM = ialphabet.get(message.charAt(i) + "");
+			int add = charK + charM;
+			out += toStringConv(add);
+			// System.out.println("Charm: "+charM);
 		}
+		System.out.println("Message Length: " + out.length() + "\n" + Filer.formatting(out));
 		return out;
 	}
 
 	public static String decrypt(String key, String message) {
+		String out = "";
+		for (int i = 0; i < key.length(); i += 2) {
+			out += alphabet.get(
+					subtract(Integer.parseInt(key.substring(i, i + 2)), Integer.parseInt(message.substring(i, i + 2))));
+		}
+		System.out.println(out);
 		return null;
+	}
+
+	private static int subtract(int key, int message) {
+		int out = message - key;
+		if (out < 0) {
+			out = (message + 100) - key;
+		}
+		return out;
+	}
+
+	private static String toStringConv(int num) {
+
+		if (num < 10) {
+			return "0" + Integer.toString(num);
+		} else if (num > 100) {
+			return toStringConv(num - 100);
+		} else if (num == 100) {
+			return "00";
+		} else {
+			return Integer.toString(num);
+		}
 	}
 }

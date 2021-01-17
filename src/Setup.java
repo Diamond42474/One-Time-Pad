@@ -63,14 +63,14 @@ public class Setup {
 		System.out.println("Press Enter & Start Moving The Mouse: ");
 		scan.nextLine();
 		Randomizer.generate(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
-		Encry_Decry.encrypt(Setup.settings.key, Setup.settings.message);
+		Filer.write_file(Filer.formatting(Encry_Decry.encrypt(Setup.settings.key, Setup.settings.message)), "message");
 	}
 
 	private static void decrypt() {
 		System.out.println("Encrypted Message: ");
-		Setup.settings.message = scan.nextLine();
+		Setup.settings.message = scan.nextLine().replaceAll("\\s", "");
 		System.out.println("Key: ");
-		Setup.settings.key = scan.nextLine();
+		Setup.settings.key = scan.nextLine().replaceAll("\\s", "");
 		Encry_Decry.decrypt(Setup.settings.key, Setup.settings.message);
 	}
 }
