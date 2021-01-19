@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 public class Encry_Decry {
 	private static HashMap<Integer, String> alphabet = new HashMap<Integer, String>();

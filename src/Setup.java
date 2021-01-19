@@ -19,6 +19,9 @@ public class Setup {
 		start();
 	}
 
+	/**
+	 * Where the dialogue starts
+	 */
 	private static void start() {
 		System.out.println("Which would you like to perform:\n0: Generate Key\n1: Encrypt Message\n2: Decrypt Message");
 		int ans = Integer.parseInt(scan.nextLine());

@@ -1,6 +1,37 @@
+import javax.imageio.ImageIO;
+
+import java.awt.Color;
+import java.awt.image.*;
+import java.io.File;
+import java.io.IOException;
 
 public class Statistics {
+	private static String removeCharAt(String s, int index) {
+	    return s.substring(0, index).concat(s.substring(index + 1));
+	}
+	private static void image_maker(String key) {
+		int w = 100;
+		int h = 100;
+		BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_BYTE_GRAY);
+		for (int x = 0; x < h; x++) {
+			for (int y = 0; y < h; y++) {
+				int n = (int)((double)(Integer.parseInt(key.charAt(0)+""))/10*255);
+				key=removeCharAt(key,0);
+				System.out.println(n);
+				Color newColor = new Color(n,n,n);
+				image.setRGB(x, y, newColor.getRGB());
+			}
+		}
+
+		try {
+			ImageIO.write(image, "jpg", new File(Setup.settings.dir+"CustomImage.jpg"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 	public static void run(String key) {
+		image_maker(key);
 		int zero = 0, one = 0, two = 0, three = 0, four = 0, five = 0, six = 0, seven = 0, eight = 0, nine = 0;
 		for (int i = 0; i < key.length(); i++) {
 			switch (key.charAt(i)) {
