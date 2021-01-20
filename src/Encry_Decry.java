@@ -54,7 +54,7 @@ public class Encry_Decry {
 		}
 	}
 
-	public static String encrypt(String key, String message) {
+	public static void encrypt(String key, String message) {
 		String out = "";
 		message = message.toUpperCase();
 		while (message.length() / 2 < key.length()) {
@@ -69,17 +69,17 @@ public class Encry_Decry {
 			// System.out.println("Charm: "+charM);
 		}
 		System.out.println("Message Length: " + out.length() + "\n" + Filer.formatting(out));
-		return out;
+		Setup.settings.enc_message = out;
 	}
 
-	public static String decrypt(String key, String message) {
+	public static void decrypt(String key, String message) {
 		String out = "";
 		for (int i = 0; i < key.length(); i += 2) {
 			out += alphabet.get(
 					subtract(Integer.parseInt(key.substring(i, i + 2)), Integer.parseInt(message.substring(i, i + 2))));
 		}
 		System.out.println(out);
-		return null;
+		Setup.settings.message = out;
 	}
 
 	private static int subtract(int key, int message) {

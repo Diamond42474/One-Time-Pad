@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.FileWriter;
 
 public class Filer {
@@ -23,6 +24,66 @@ public class Filer {
 			myWriter.close();
 		} catch (Exception e) {
 
+		}
+	}
+	public static void generate_folders() {
+		File keys = new File(Setup.settings.dir+"keys");
+		File messages = new File(Setup.settings.dir+"messages");
+		if(!keys.exists()) {
+			keys.mkdir();
+		}
+		if(!messages.exists()) {
+			messages.mkdir();
+		}
+	}
+	public static boolean directory_exists(String dir) {
+		File file = new File(dir);
+		return file.exists();
+	}
+	static class save{
+		public static void key() {
+			boolean created = false;
+			int num = 0;
+			while(!created) {
+				String name = "key";
+				name+=Integer.toString(num);
+				File file = new File(Setup.settings.dir+"keys/"+name+".txt");
+				if(!file.exists()) {
+					try {
+						String txt = formatting(Setup.settings.key);
+						FileWriter myWriter = new FileWriter(Setup.settings.dir+"keys/"+name+".txt");
+						myWriter.write(txt);
+						myWriter.close();
+						created = true;
+						break;
+					} catch (Exception e) {
+
+					}
+				}
+				num++;
+			}
+		}
+		public static void message() {
+			boolean created = false;
+			int num = 0;
+			while(!created) {
+				String name = "message";
+				name+=Integer.toString(num);
+				File file = new File(Setup.settings.dir+"messages/"+name+".txt");
+				if(!file.exists()) {
+					try {
+						String txt = formatting(Setup.settings.enc_message);
+						FileWriter myWriter = new FileWriter(Setup.settings.dir+"messages/"+name+".txt");
+						myWriter.write(txt);
+						myWriter.close();
+						created = true;
+						break;
+					} catch (Exception e) {
+
+					}
+				}
+				num++;
+			}
 		}
 	}
 }

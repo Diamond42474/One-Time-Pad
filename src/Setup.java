@@ -10,12 +10,17 @@ public class Setup {
 		static String enc_message = "";
 
 		static String dir = System.getProperty("user.home") + "/Desktop/";
+		
+		static class preferences{
+			static boolean store_data = false;
+		}
 	}
 
 	private static Scanner scan;
 
 	public static void dialog() {
 		scan = new Scanner(System.in);
+		set_up();
 		start();
 	}
 
@@ -41,7 +46,45 @@ public class Setup {
 			break;
 		}
 	}
-
+	private static void set_up() {
+		System.out.println("Would you like to store data?\n0: yes\n1: no");
+		int ans = Integer.parseInt(scan.nextLine());
+		switch(ans) {
+		case 0:
+			settings.preferences.store_data = true;
+			directory_setup();
+			break;
+		case 1:
+			settings.preferences.store_data = false;
+			break;
+		default:
+			System.out.println("That is not an option. Try again.");
+			set_up();
+		}
+	}
+	private static void directory_setup() {
+		System.out.println("Would you like to use default directory or custom?\n0: Default\n1: Custom");
+		int ans = Integer.parseInt(scan.nextLine());
+		switch(ans) {
+		case 0:
+			Filer.generate_folders();
+			break;
+		case 1:
+			System.out.println("Enter your working directory");
+			String di = scan.nextLine();
+			if(Filer.directory_exists(di)) {
+				Setup.settings.dir = di+"/";
+				Filer.generate_folders();
+			}else {
+				System.out.println("Directory is not correct. Please try again");
+				directory_setup();
+			}
+			break;
+		default:
+			System.out.println("That is not an option. Try again.");
+			directory_setup();
+		}
+	}
 	private static void generate() {
 		System.out.println("Message Size: ");
 		Setup.settings.message_size = Integer.parseInt(scan.nextLine()) * 2;
@@ -66,7 +109,9 @@ public class Setup {
 		System.out.println("Press Enter & Start Moving The Mouse: ");
 		scan.nextLine();
 		Randomizer.generate(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
-		Filer.write_file(Filer.formatting(Encry_Decry.encrypt(Setup.settings.key, Setup.settings.message)), "message");
+		Encry_Decry.encrypt(Setup.settings.key, Setup.settings.message);
+		Filer.save.message();
+		Filer.save.key();
 	}
 
 	private static void decrypt() {
@@ -74,6 +119,6 @@ public class Setup {
 		Setup.settings.message = scan.nextLine().replaceAll("\\s", "");
 		System.out.println("Key: ");
 		Setup.settings.key = scan.nextLine().replaceAll("\\s", "");
-		Encry_Decry.decrypt(Setup.settings.key, Setup.settings.message);
+		Encry_Decry.decrypt(Setup.settings.key, Setup.settings.enc_message);
 	}
 }

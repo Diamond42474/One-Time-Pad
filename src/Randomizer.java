@@ -41,7 +41,7 @@ public class Randomizer {
 		long time = System.nanoTime();
 		time = Long.parseLong(Long.toString(time).substring(6));
 		// System.out.println("Time: "+time);
-		String out = ((1 + time) * (1 + x) * (1 + y)) + "";
+		String out = (x+y+time) + "";
 		// System.out.println("Number: "+out);
 		return (long) (Long.parseLong(out));
 	}
