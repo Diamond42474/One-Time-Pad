@@ -7,31 +7,35 @@ import java.io.IOException;
 
 public class Statistics {
 	private static String removeCharAt(String s, int index) {
-	    return s.substring(0, index).concat(s.substring(index + 1));
+		return s.substring(0, index).concat(s.substring(index + 1));
 	}
+
+	@SuppressWarnings("unused")
+	@Deprecated
 	private static void image_maker(String key, String name) {
 		int w = (int) Math.sqrt(key.length());
 		int h = (int) Math.sqrt(key.length());
 		BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_BYTE_GRAY);
 		for (int x = 0; x < h; x++) {
 			for (int y = 0; y < h; y++) {
-				int n = (int)((double)(Integer.parseInt(key.charAt(0)+""))/10*255);
-				key=removeCharAt(key,0);
-				//System.out.println(n);
-				Color newColor = new Color(n,n,n);
+				int n = (int) ((double) (Integer.parseInt(key.charAt(0) + "")) / 10 * 255);
+				key = removeCharAt(key, 0);
+				// System.out.println(n);
+				Color newColor = new Color(n, n, n);
 				image.setRGB(x, y, newColor.getRGB());
 			}
 		}
 
 		try {
-			ImageIO.write(image, "jpg", new File(Setup.settings.dir+name+".jpg"));
+			ImageIO.write(image, "jpg", new File(Setup.settings.dir + name + ".jpg"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
+
 	public static void run(String key) {
-		//image_maker(key,"Stat Image");
+		// image_maker(key,"Stat Image");
 		int zero = 0, one = 0, two = 0, three = 0, four = 0, five = 0, six = 0, seven = 0, eight = 0, nine = 0;
 		for (int i = 0; i < key.length(); i++) {
 			switch (key.charAt(i)) {

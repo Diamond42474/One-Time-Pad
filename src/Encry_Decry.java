@@ -75,8 +75,9 @@ public class Encry_Decry {
 	public static void decrypt(String key, String message) {
 		String out = "";
 		for (int i = 0; i < key.length(); i += 2) {
-			out += alphabet.get(
-					subtract(Integer.parseInt(key.substring(i, i + 2)), Integer.parseInt(message.substring(i, i + 2))));
+			int k = Integer.parseInt(key.substring(i, i + 2));
+			int m = Integer.parseInt(message.substring(i, i + 2));
+			out += alphabet.get(subtract(k, m));
 		}
 		System.out.println(out);
 		Setup.settings.message = out;
