@@ -6,7 +6,7 @@ public class Filer {
 		Statistics.run(key);
 		String out = formatting(key);
 		System.out.println(out);
-		write_file(out,"key");
+		//write_file(out,"key");
 	}
 	public static String formatting(String key) {
 		String out = "";
@@ -17,6 +17,7 @@ public class Filer {
 		}
 		return out;
 	}
+	/*
 	public static void write_file(String txt, String name) {
 		try {
 			FileWriter myWriter = new FileWriter(Setup.settings.dir + name+".txt");
@@ -26,6 +27,7 @@ public class Filer {
 
 		}
 	}
+	*/
 	public static void generate_folders() {
 		File keys = new File(Setup.settings.dir+"keys");
 		File messages = new File(Setup.settings.dir+"messages");
