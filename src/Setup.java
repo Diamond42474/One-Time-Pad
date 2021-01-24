@@ -1,6 +1,14 @@
 import java.util.Scanner;
 
+/**
+ * 
+ * Class that controls all of the set up, settings, and dialogue
+ */
 public class Setup {
+	/**
+	 * 
+	 * Settings and main data for encryption and decryption
+	 */
 	static class settings {
 		static int message_size = 0;
 		static int block_size = 0;
@@ -13,6 +21,10 @@ public class Setup {
 
 		static class preferences {
 			static boolean store_data = false;
+		}
+
+		static class formatting {
+			static final String sep = "\n##########\n\n";
 		}
 	}
 
@@ -31,7 +43,8 @@ public class Setup {
 	 * central loop to work with encryption
 	 */
 	private static void main() {
-		System.out.println("Which would you like to perform:\n0: Generate Key\n1: Encrypt Message\n2: Decrypt Message");
+		System.out.println(settings.formatting.sep
+				+ "Which would you like to perform:\n0: Generate Key\n1: Encrypt Message\n2: Decrypt Message");
 		int ans = Integer.parseInt(scan.nextLine());
 		switch (ans) {
 		case 0:
@@ -48,9 +61,32 @@ public class Setup {
 			main();
 			break;
 		}
-		scan.close();
+		looper();
 	}
 
+	/**
+	 * Makes decision on if the program should continue running or not
+	 */
+	private static void looper() {
+		System.out.println("\n0: Exit\n1: Continue");
+		int ans = Integer.parseInt(scan.nextLine());
+		switch (ans) {
+		case 0:
+			System.exit(0);
+			break;
+		case 1:
+			main();
+			break;
+		default:
+			System.out.println("That is not an option. Please try again.");
+			looper();
+		}
+	}
+
+	/**
+	 * Takes input data from the user and sets up the directory if the user decides
+	 * to store data
+	 */
 	private static void set_up() {
 		System.out.println("Would you like to store data?\n0: yes\n1: no");
 		int ans = Integer.parseInt(scan.nextLine());
@@ -95,6 +131,10 @@ public class Setup {
 		}
 	}
 
+	/**
+	 * Goes through the process of generating a key based off of user
+	 * specifications.
+	 */
 	private static void generate() {
 		System.out.println("Message Size: ");
 		Setup.settings.message_size = Integer.parseInt(scan.nextLine()) * 2;
@@ -107,6 +147,10 @@ public class Setup {
 		Randomizer.generate(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
 	}
 
+	/**
+	 * Goes through the process of generating a key and encrypting a message based
+	 * off of user input.
+	 */
 	private static void encrypt() {
 		System.out.println("Message: ");
 		Setup.settings.message = scan.nextLine();
@@ -126,6 +170,9 @@ public class Setup {
 		}
 	}
 
+	/**
+	 * Decrypts message using user input (needs to be upgraded to read from a file)
+	 */
 	private static void decrypt() {
 		System.out.println("Encrypted Message: ");
 		Setup.settings.enc_message = scan.nextLine().replaceAll("\\s", "");
