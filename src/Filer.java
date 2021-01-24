@@ -1,5 +1,7 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.util.Scanner;
 
 public class Filer {
 	public static void process(String key, int block_size) {
@@ -19,13 +21,10 @@ public class Filer {
 		return out;
 	}
 
-	/*
-	 * public static void write_file(String txt, String name) { try { FileWriter
-	 * myWriter = new FileWriter(Setup.settings.dir + name+".txt");
-	 * myWriter.write(txt); myWriter.close(); } catch (Exception e) {
-	 * 
-	 * } }
-	 */
+	public static String unformat(String txt) {
+		return txt.replaceAll("\\s", "");
+	}
+
 	public static void generate_folders() {
 		File keys = new File(Setup.settings.dir + "keys");
 		File messages = new File(Setup.settings.dir + "messages");
@@ -42,6 +41,64 @@ public class Filer {
 		return file.exists();
 	}
 
+	static class read {
+		public static void txt_message(String dir) {
+			String out = "";
+			try {
+			      File file = new File(dir);
+			      Scanner myReader = new Scanner(file);
+			      while (myReader.hasNextLine()) {
+			        out+=myReader.nextLine();
+			      }
+			      myReader.close();
+			      System.out.println(out);
+			      Setup.settings.message=out;
+			    } catch (FileNotFoundException e) {
+			      System.out.println("An error occurred.");
+			      e.printStackTrace();
+			    }
+		}
+
+		public static void message(String dir) {
+			String out = "";
+			try {
+			      File file = new File(dir);
+			      Scanner myReader = new Scanner(file);
+			      while (myReader.hasNextLine()) {
+			        out+=myReader.nextLine();
+			      }
+			      myReader.close();
+			      System.out.println(out);
+			      Setup.settings.enc_message=unformat(out);
+			    } catch (FileNotFoundException e) {
+			      System.out.println("An error occurred.");
+			      e.printStackTrace();
+			    }
+		}
+
+		public static void key(String dir) {
+			String out = "";
+			try {
+			      File file = new File(dir);
+			      Scanner myReader = new Scanner(file);
+			      while (myReader.hasNextLine()) {
+			        out+=myReader.nextLine();
+			      }
+			      myReader.close();
+			      System.out.println(out);
+			      Setup.settings.key=unformat(out);
+			    } catch (FileNotFoundException e) {
+			      System.out.println("An error occurred.");
+			      e.printStackTrace();
+			    }
+		}
+	}
+
+	/**
+	 * 
+	 * Contains all of the methods that save files
+	 *
+	 */
 	static class save {
 		public static void key() {
 			boolean created = false;

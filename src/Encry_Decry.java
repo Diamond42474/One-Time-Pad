@@ -61,12 +61,10 @@ public class Encry_Decry {
 			message = message + " ";
 		}
 		for (int i = 0; i < key.length() / 2; i++) {
-			// System.out.println("Length: "+key.length());
 			int charK = Integer.parseInt(key.substring(i * 2, (i * 2) + 2));
 			int charM = ialphabet.get(message.charAt(i) + "");
 			int add = charK + charM;
 			out += toStringConv(add);
-			// System.out.println("Charm: "+charM);
 		}
 		System.out.println("Message Length: " + out.length() + "\n" + Filer.formatting(out));
 		Setup.settings.enc_message = out;

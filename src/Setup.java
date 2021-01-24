@@ -175,9 +175,9 @@ public class Setup {
 	 */
 	private static void decrypt() {
 		System.out.println("Encrypted Message: ");
-		Setup.settings.enc_message = scan.nextLine().replaceAll("\\s", "");
+		Setup.settings.enc_message = Filer.unformat(scan.nextLine());
 		System.out.println("Key: ");
-		Setup.settings.key = scan.nextLine().replaceAll("\\s", "");
+		Setup.settings.key = Filer.unformat(scan.nextLine());
 		Encry_Decry.decrypt(Setup.settings.key, Setup.settings.enc_message);
 		if (settings.preferences.store_data) {
 			Filer.save.txt_message();
