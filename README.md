@@ -1,6 +1,6 @@
 # One-Time-Pad
 ### What is a One-Time Pad?
-A [One-Time Pads](https://en.wikipedia.org/wiki/One-time_pad) is a method of encryption that is mathmatically impossible to break if done correctly. 
+A [One-Time Pad](https://en.wikipedia.org/wiki/One-time_pad) is a method of encryption that is mathmatically impossible to break if done correctly. 
 The most important part is that the key used for encryption is truly random. Instead of using a psudo form of random generation, the program takes user input such as mouse movement
 and combines it with clock timing in order to get true random.
 
