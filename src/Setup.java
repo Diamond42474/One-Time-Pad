@@ -141,7 +141,7 @@ public class Setup {
 		System.out.println("Block Size: ");
 		Setup.settings.block_size = Integer.parseInt(scan.nextLine());
 		System.out.println("Padding Ammount: ");
-		Setup.settings.padding_blocks = Integer.parseInt(scan.nextLine()) * 2;
+		Setup.settings.padding_blocks = Integer.parseInt(scan.nextLine());
 		System.out.println("Press Enter & Start Moving The Mouse: ");
 		scan.nextLine();
 		Randomizer.generate(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
