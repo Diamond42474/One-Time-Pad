@@ -4,6 +4,7 @@ import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Filer {
+
 	public static void process(String key, int block_size) {
 		Statistics.run(key);
 		String out = formatting(key);
@@ -45,52 +46,52 @@ public class Filer {
 		public static void txt_message(String dir) {
 			String out = "";
 			try {
-			      File file = new File(dir);
-			      Scanner myReader = new Scanner(file);
-			      while (myReader.hasNextLine()) {
-			        out+=myReader.nextLine();
-			      }
-			      myReader.close();
-			      System.out.println(out);
-			      Setup.settings.message=out;
-			    } catch (FileNotFoundException e) {
-			      System.out.println("An error occurred.");
-			      e.printStackTrace();
-			    }
+				File file = new File(dir);
+				Scanner myReader = new Scanner(file);
+				while (myReader.hasNextLine()) {
+					out += myReader.nextLine();
+				}
+				myReader.close();
+				System.out.println(out);
+				Setup.settings.message = out;
+			} catch (FileNotFoundException e) {
+				System.out.println("An error occurred.");
+				e.printStackTrace();
+			}
 		}
 
 		public static void message(String dir) {
 			String out = "";
 			try {
-			      File file = new File(dir);
-			      Scanner myReader = new Scanner(file);
-			      while (myReader.hasNextLine()) {
-			        out+=myReader.nextLine();
-			      }
-			      myReader.close();
-			      System.out.println(out);
-			      Setup.settings.enc_message=unformat(out);
-			    } catch (FileNotFoundException e) {
-			      System.out.println("An error occurred.");
-			      e.printStackTrace();
-			    }
+				File file = new File(dir);
+				Scanner myReader = new Scanner(file);
+				while (myReader.hasNextLine()) {
+					out += myReader.nextLine();
+				}
+				myReader.close();
+				System.out.println(out);
+				Setup.settings.enc_message = unformat(out);
+			} catch (FileNotFoundException e) {
+				System.out.println("An error occurred.");
+				e.printStackTrace();
+			}
 		}
 
 		public static void key(String dir) {
 			String out = "";
 			try {
-			      File file = new File(dir);
-			      Scanner myReader = new Scanner(file);
-			      while (myReader.hasNextLine()) {
-			        out+=myReader.nextLine();
-			      }
-			      myReader.close();
-			      System.out.println(out);
-			      Setup.settings.key=unformat(out);
-			    } catch (FileNotFoundException e) {
-			      System.out.println("An error occurred.");
-			      e.printStackTrace();
-			    }
+				File file = new File(dir);
+				Scanner myReader = new Scanner(file);
+				while (myReader.hasNextLine()) {
+					out += myReader.nextLine();
+				}
+				myReader.close();
+				System.out.println(out);
+				Setup.settings.key = unformat(out);
+			} catch (FileNotFoundException e) {
+				System.out.println("An error occurred.");
+				e.printStackTrace();
+			}
 		}
 	}
 
