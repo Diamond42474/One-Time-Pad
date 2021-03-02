@@ -6,6 +6,9 @@ public class Encry_Decry {
 	private static HashMap<Integer, String> alphabet = new HashMap<Integer, String>();
 	private static HashMap<String, Integer> ialphabet = new HashMap<String, Integer>();
 
+	/**
+	 * Creates a Hashmap of the alphabet for referencing numbers and strings to numbers
+	 */
 	public static void Setup() {
 		alphabet.put(1, "A");
 		alphabet.put(2, "B");
@@ -54,6 +57,13 @@ public class Encry_Decry {
 		}
 	}
 
+	/**
+	 * 
+	 * @param key     Numerical encryption key
+	 * @param message String of chars to be encrypted
+	 * 
+	 *                Encrypts message using the encryption key
+	 */
 	public static void encrypt(String key, String message) {
 		String out = "";
 		message = message.toUpperCase();
@@ -70,6 +80,13 @@ public class Encry_Decry {
 		Setup.settings.enc_message = out;
 	}
 
+	/**
+	 * 
+	 * @param key     Numerical encryption key
+	 * @param message String of chars using the encryption key
+	 * 
+	 *                Decrypts message using the encryption key
+	 */
 	public static void decrypt(String key, String message) {
 		String out = "";
 		for (int i = 0; i < key.length(); i += 2) {
@@ -81,6 +98,13 @@ public class Encry_Decry {
 		Setup.settings.message = out;
 	}
 
+	/**
+	 * 
+	 * @param key     Numerical Encryption Key
+	 * @param message Message in numerical format
+	 * @return The decrypted value in numerical format
+	 */
+	// TODO keep commenting
 	private static int subtract(int key, int message) {
 		int out = message - key;
 		if (out < 0) {
@@ -89,6 +113,11 @@ public class Encry_Decry {
 		return out;
 	}
 
+	/**
+	 * 
+	 * @param num the int being converted to string
+	 * @return The integer in correct string format
+	 */
 	private static String toStringConv(int num) {
 
 		if (num < 10) {
