@@ -145,6 +145,7 @@ public class Setup {
 		System.out.println("Press Enter & Start Moving The Mouse: ");
 		scan.nextLine();
 		Randomizer.generate(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
+		Statistics.simpleDisplay();
 	}
 
 	/**
@@ -168,6 +169,7 @@ public class Setup {
 			Filer.save.message();
 			Filer.save.key();
 		}
+		Statistics.general();
 	}
 
 	/**
@@ -175,9 +177,9 @@ public class Setup {
 	 */
 	private static void decrypt() {
 		System.out.println("Encrypted Message: ");
-		Setup.settings.enc_message = Filer.unformat(scan.nextLine());
+		Setup.settings.enc_message = Processors.unformat(scan.nextLine());
 		System.out.println("Key: ");
-		Setup.settings.key = Filer.unformat(scan.nextLine());
+		Setup.settings.key = Processors.unformat(scan.nextLine());
 		Encry_Decry.decrypt(Setup.settings.key, Setup.settings.enc_message);
 		if (settings.preferences.store_data) {
 			Filer.save.txt_message();

@@ -76,7 +76,7 @@ public class Encry_Decry {
 			int add = charK + charM;
 			out += toStringConv(add);
 		}
-		System.out.println("Message Length: " + out.length() + "\n" + Filer.formatting(out));
+		System.out.println("Message Length: " + out.length() + "\n" + Processors.formatting(out));
 		Setup.settings.enc_message = out;
 	}
 

@@ -4,14 +4,16 @@ import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Filer {
-
+	
+	/*
 	public static void process(String key, int block_size) {
-		Statistics.run(key);
+		//Statistics.run(key);
 		String out = formatting(key);
 		System.out.println(out);
 		// write_file(out,"key");
 	}
-
+	*/
+	/*
 	public static String formatting(String key) {
 		String out = "";
 		int origional_key_length = key.length();
@@ -25,7 +27,7 @@ public class Filer {
 	public static String unformat(String txt) {
 		return txt.replaceAll("\\s", "");
 	}
-
+	*/
 	public static void generate_folders() {
 		File keys = new File(Setup.settings.dir + "keys");
 		File messages = new File(Setup.settings.dir + "messages");
@@ -70,7 +72,7 @@ public class Filer {
 				}
 				myReader.close();
 				System.out.println(out);
-				Setup.settings.enc_message = unformat(out);
+				Setup.settings.enc_message = Processors.unformat(out);
 			} catch (FileNotFoundException e) {
 				System.out.println("An error occurred.");
 				e.printStackTrace();
@@ -87,7 +89,7 @@ public class Filer {
 				}
 				myReader.close();
 				System.out.println(out);
-				Setup.settings.key = unformat(out);
+				Setup.settings.key = Processors.unformat(out);
 			} catch (FileNotFoundException e) {
 				System.out.println("An error occurred.");
 				e.printStackTrace();
@@ -110,7 +112,7 @@ public class Filer {
 				File file = new File(Setup.settings.dir + "keys/" + name + ".txt");
 				if (!file.exists()) {
 					try {
-						String txt = formatting(Setup.settings.key);
+						String txt = Processors.formatting(Setup.settings.key);
 						FileWriter myWriter = new FileWriter(Setup.settings.dir + "keys/" + name + ".txt");
 						myWriter.write(txt);
 						myWriter.close();
@@ -133,7 +135,7 @@ public class Filer {
 				File file = new File(Setup.settings.dir + "messages/" + name + ".txt");
 				if (!file.exists()) {
 					try {
-						String txt = formatting(Setup.settings.enc_message);
+						String txt = Processors.formatting(Setup.settings.enc_message);
 						FileWriter myWriter = new FileWriter(Setup.settings.dir + "messages/" + name + ".txt");
 						myWriter.write(txt);
 						myWriter.close();
