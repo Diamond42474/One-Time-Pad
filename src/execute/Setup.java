@@ -1,4 +1,7 @@
+package execute;
 import java.util.Scanner;
+
+import execute.Filer.save;
 
 /**
  * 
@@ -9,22 +12,22 @@ public class Setup {
 	 * 
 	 * Settings and main data for encryption and decryption
 	 */
-	static class settings {
-		static int message_size = 0;
-		static int block_size = 0;
-		static int padding_blocks = 0;
-		static String key = "";
-		static String message = "";
-		static String enc_message = "";
+	public static class settings {
+		public static int message_size = 0;
+		public static int block_size = 0;
+		public static int padding_blocks = 0;
+		public static String key = "";
+		public static String message = "";
+		public static String enc_message = "";
 
-		static String dir = System.getProperty("user.home") + "/Desktop/";
+		public static String dir = System.getProperty("user.home") + "/Desktop/";
 
-		static class preferences {
-			static boolean store_data = false;
+		public static class preferences {
+			public static boolean store_data = false;
 		}
 
-		static class formatting {
-			static final String sep = "\n##########\n\n";
+		public static class formatting {
+			public static final String sep = "\n##########\n\n";
 		}
 	}
 
