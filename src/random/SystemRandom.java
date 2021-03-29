@@ -6,7 +6,7 @@ import java.security.SecureRandom;
 public class SystemRandom extends RandomData {
 	private SecureRandom rand;
 
-	SystemRandom() {
+	public SystemRandom() {
 		new SecureRandom();
 		try {
 			rand = SecureRandom.getInstanceStrong();
@@ -16,7 +16,7 @@ public class SystemRandom extends RandomData {
 	}
 
 	@Override
-	long randomNumber() {
+	protected long randomNumber() {
 		return Math.abs(rand.nextLong());
 	}
 }

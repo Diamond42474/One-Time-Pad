@@ -1,4 +1,5 @@
 package execute;
+
 import javax.imageio.ImageIO;
 import java.awt.Color;
 import java.awt.image.*;
@@ -35,45 +36,59 @@ public class Statistics {
 	}
 
 	public static void general() {
-		int zero = 0, one = 0, two = 0, three = 0, four = 0, five = 0, six = 0, seven = 0, eight = 0, nine = 0;
+		int[] stats = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		for (int i = 0; i < Setup.settings.key.length(); i++) {
-			switch (Setup.settings.key.charAt(i)) {
+			char c = Setup.settings.key.charAt(i);
+			switch (c) {
 			case '0':
-				zero++;
+				stats[0]++;
 				break;
 			case '1':
-				one++;
+				stats[1]++;
 				break;
 			case '2':
-				two++;
+				stats[2]++;
 				break;
 			case '3':
-				three++;
+				stats[3]++;
 				break;
 			case '4':
-				four++;
+				stats[4]++;
 				break;
 			case '5':
-				five++;
+				stats[5]++;
 				break;
 			case '6':
-				six++;
+				stats[6]++;
 				break;
 			case '7':
-				seven++;
+				stats[7]++;
 				break;
 			case '8':
-				eight++;
+				stats[8]++;
 				break;
 			case '9':
-				nine++;
+				stats[9]++;
 				break;
 			}
 		}
-		System.out.printf(
-				"Key Stats:\n" + "0: %d - 1: %d - 2: %d - 3: %d - 4: %d - 5: %d - 6: %d - 7: %d - 8: %d - 9: %d \n",
-				zero, one, two, three, four, five, six, seven, eight, nine);
-		System.out.println("Key Length: " + Setup.settings.key.length());
+		int kz = Setup.settings.key.length();
+		System.out.printf("0: %d\n1: %d\n2: %d\n3: %d\n4: %d\n5: %d\n6: %d\n7: %d\n8: %d\n9: %d\n", stats[0], stats[1],
+				stats[2], stats[3], stats[4], stats[5], stats[6], stats[7], stats[8], stats[9]);
+		System.out.print("\n");
+		System.out.printf("0: %f\n1: %f\n2: %f\n3: %f\n4: %f\n5: %f\n6: %f\n7: %f\n8: %f\n9: %f\n",
+				(float) stats[0] / kz * 100, (float) stats[1] / kz * 100, (float) stats[2] / kz * 100,
+				(float) stats[3] / kz * 100, (float) stats[4] / kz * 100, (float) stats[5] / kz * 100,
+				(float) stats[6] / kz * 100, (float) stats[7] / kz * 100, (float) stats[8] / kz * 100,
+				(float) stats[9] / kz * 100);
+
+		for (int i = 0; i < stats.length; i++) {
+			System.out.print(i + ": ");
+			for (int ie = 0; ie < (float) stats[i] / kz * 100; ie++) {
+				System.out.print("#");
+			}
+			System.out.print("\n");
+		}
 	}
 
 	public static void simpleDisplay() {

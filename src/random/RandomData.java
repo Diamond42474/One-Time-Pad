@@ -21,7 +21,7 @@ public abstract class RandomData {
 		Setup.settings.key = rawKey;
 	}
 
-	long randomNumber() {
+	protected long randomNumber() {
 		return 0;
 	}
 }

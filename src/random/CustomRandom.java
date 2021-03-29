@@ -8,11 +8,13 @@ public class CustomRandom extends RandomData {
 	static int x_bounds = 1919;
 	static final int min_time = 100;
 	static final int max_time = 199;
-	CustomRandom(){
+
+	public CustomRandom() {
 		x_bounds = Toolkit.getDefaultToolkit().getScreenSize().width;
 	}
+
 	@Override
-	long randomNumber() {
+	protected long randomNumber() {
 		int x = MouseInfo.getPointerInfo().getLocation().x;
 		int y = MouseInfo.getPointerInfo().getLocation().y;
 		try {

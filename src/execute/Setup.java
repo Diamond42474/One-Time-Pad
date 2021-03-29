@@ -1,7 +1,7 @@
 package execute;
-import java.util.Scanner;
 
-import execute.Filer.save;
+import java.util.Scanner;
+import random.RandomData;
 
 /**
  * 
@@ -21,6 +21,8 @@ public class Setup {
 		public static String enc_message = "";
 
 		public static String dir = System.getProperty("user.home") + "/Desktop/";
+
+		public static RandomData randomData;
 
 		public static class preferences {
 			public static boolean store_data = false;
@@ -147,6 +149,8 @@ public class Setup {
 		Setup.settings.padding_blocks = Integer.parseInt(scan.nextLine());
 		System.out.println("Press Enter & Start Moving The Mouse: ");
 		scan.nextLine();
+		// settings.randomData.generateKey(Setup.settings.message_size,
+		// Setup.settings.block_size, Setup.settings.padding_blocks);
 		Randomizer.generate(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
 		Statistics.simpleDisplay();
 	}
