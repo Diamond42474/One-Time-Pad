@@ -50,6 +50,7 @@ public class Randomizer {
 			// System.out.println("Number: "+out);
 			return (long) (Long.parseLong(out));
 		}
+		@SuppressWarnings("unused")
 		private static long BuiltInNumber() {
 			return Math.abs(secureRandom.nextLong());
 		}

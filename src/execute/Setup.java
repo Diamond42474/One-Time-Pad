@@ -1,7 +1,11 @@
 package execute;
 
 import java.util.Scanner;
+
+import random.CustomRandom;
+import random.PingRandom;
 import random.RandomData;
+import random.SystemRandom;
 
 /**
  * 
@@ -53,9 +57,11 @@ public class Setup {
 		int ans = Integer.parseInt(scan.nextLine());
 		switch (ans) {
 		case 0:
+			setEncryptionMethod();
 			generate();
 			break;
 		case 1:
+			setEncryptionMethod();
 			encrypt();
 			break;
 		case 2:
@@ -67,6 +73,26 @@ public class Setup {
 			break;
 		}
 		looper();
+	}
+	private static void setEncryptionMethod() {
+		System.out.println(settings.formatting.sep
+				+ "Which encryption method would you like to use?\n0: System Random\n1: CustomRandom\n2: PingRandom");
+		int ans = Integer.parseInt(scan.nextLine());
+		switch (ans) {
+		case 0:
+			settings.randomData = new SystemRandom();
+			break;
+		case 1:
+			settings.randomData = new CustomRandom();
+			break;
+		case 2:
+			settings.randomData = new PingRandom();
+			break;
+		default:
+			System.out.println("\nThe numbered you entered is not an option. Try again.\n");
+			main();
+			break;
+		}
 	}
 
 	/**
@@ -147,12 +173,11 @@ public class Setup {
 		Setup.settings.block_size = Integer.parseInt(scan.nextLine());
 		System.out.println("Padding Ammount: ");
 		Setup.settings.padding_blocks = Integer.parseInt(scan.nextLine());
-		System.out.println("Press Enter & Start Moving The Mouse: ");
-		scan.nextLine();
+		
 		// settings.randomData.generateKey(Setup.settings.message_size,
 		// Setup.settings.block_size, Setup.settings.padding_blocks);
-		Randomizer.generate(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
-		Statistics.simpleDisplay();
+		settings.randomData.generateKey(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
+		Statistics.general();
 	}
 
 	/**
@@ -168,9 +193,8 @@ public class Setup {
 		Setup.settings.block_size = Integer.parseInt(scan.nextLine());
 		System.out.println("Padding Ammount: ");
 		Setup.settings.padding_blocks = Integer.parseInt(scan.nextLine());
-		System.out.println("Press Enter & Start Moving The Mouse: ");
-		scan.nextLine();
-		Randomizer.generate(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
+		
+		settings.randomData.generateKey(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
 		Encry_Decry.encrypt(Setup.settings.key, Setup.settings.message);
 		if (settings.preferences.store_data) {
 			Filer.save.message();

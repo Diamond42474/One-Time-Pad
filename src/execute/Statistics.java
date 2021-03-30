@@ -89,6 +89,14 @@ public class Statistics {
 			}
 			System.out.print("\n");
 		}
+		
+		for(int i = 0;i<kz;) {
+			for(int ie = 0;ie<100 && i<kz;ie++) {
+				System.out.print(Setup.settings.key.charAt(i));
+				i++;
+			}
+			System.out.print("\n");
+		}
 	}
 
 	public static void simpleDisplay() {
