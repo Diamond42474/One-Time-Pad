@@ -2,6 +2,8 @@ package execute;
 
 import java.util.Scanner;
 
+import file.Filer;
+import file.Processors;
 import random.CustomRandom;
 import random.PingRandom;
 import random.RandomData;
@@ -178,6 +180,7 @@ public class Setup {
 		// Setup.settings.block_size, Setup.settings.padding_blocks);
 		settings.randomData.generateKey(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
 		Statistics.general();
+		Statistics.keyAndMessageFormatted();
 	}
 
 	/**
@@ -201,6 +204,7 @@ public class Setup {
 			Filer.save.key();
 		}
 		Statistics.general();
+		Statistics.keyAndMessageFormatted();
 	}
 
 	/**
@@ -215,5 +219,7 @@ public class Setup {
 		if (settings.preferences.store_data) {
 			Filer.save.txt_message();
 		}
+		Statistics.keyAndMessageFormatted();
+		Statistics.decryptedMessage();
 	}
 }

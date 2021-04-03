@@ -1,6 +1,9 @@
-package execute;
+package app;
 
-public class Runner {
+import execute.Encry_Decry;
+import execute.Setup;
+
+public class OneTimePad {
 
 	public static void main(String[] args) {
 		// Creates ArrayList of character that are accepted

@@ -1,6 +1,9 @@
 package execute;
 
 import javax.imageio.ImageIO;
+
+import file.Processors;
+
 import java.awt.Color;
 import java.awt.image.*;
 import java.io.File;
@@ -103,4 +106,13 @@ public class Statistics {
 		System.out.printf("\nKey:\nSize: %d\nPadding: %d\nBlock Size: %d\n\n%s\n", Setup.settings.key.length(),
 				Setup.settings.padding_blocks, Setup.settings.block_size, Processors.formatting(Setup.settings.key));
 	}
+	public static void keyAndMessageFormatted() {
+		System.out.printf("\nKey:\n%s\n",Processors.formatting(Setup.settings.key));
+		if(Setup.settings.enc_message.length()>0) {
+			System.out.printf("Encrypted Message:\n%s\n",Processors.formatting(Setup.settings.enc_message));
+		}
+	}
+	public static void decryptedMessage() {
+		System.out.printf("Decrypted Message:\n%s\n",Setup.settings.message);
+		}
 }

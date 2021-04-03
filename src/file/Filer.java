@@ -1,8 +1,10 @@
-package execute;
+package file;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Scanner;
+
+import execute.Setup;
 
 public class Filer {
 	
@@ -45,7 +47,7 @@ public class Filer {
 		return file.exists();
 	}
 
-	static class read {
+	public static class read {
 		public static void txt_message(String dir) {
 			String out = "";
 			try {
@@ -103,7 +105,7 @@ public class Filer {
 	 * Contains all of the methods that save files
 	 *
 	 */
-	static class save {
+	public static class save {
 		public static void key() {
 			boolean created = false;
 			int num = 0;
