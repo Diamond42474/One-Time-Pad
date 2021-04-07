@@ -76,6 +76,7 @@ public class Setup {
 		}
 		looper();
 	}
+
 	private static void setEncryptionMethod() {
 		System.out.println(settings.formatting.sep
 				+ "Which encryption method would you like to use?\n0: System Random\n1: CustomRandom\n2: PingRandom");
@@ -175,10 +176,13 @@ public class Setup {
 		Setup.settings.block_size = Integer.parseInt(scan.nextLine());
 		System.out.println("Padding Ammount: ");
 		Setup.settings.padding_blocks = Integer.parseInt(scan.nextLine());
-		
+
 		// settings.randomData.generateKey(Setup.settings.message_size,
 		// Setup.settings.block_size, Setup.settings.padding_blocks);
-		settings.randomData.generateKey(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
+		System.out.printf("Estimated Time: %s\n", settings.randomData.estimatedTime(Setup.settings.message_size,
+				Setup.settings.block_size, Setup.settings.padding_blocks, 5));
+		settings.randomData.generateKey(Setup.settings.message_size, Setup.settings.block_size,
+				Setup.settings.padding_blocks);
 		Statistics.general();
 		Statistics.keyAndMessageFormatted();
 	}
@@ -196,8 +200,12 @@ public class Setup {
 		Setup.settings.block_size = Integer.parseInt(scan.nextLine());
 		System.out.println("Padding Ammount: ");
 		Setup.settings.padding_blocks = Integer.parseInt(scan.nextLine());
+
+		System.out.printf("Estimated Time: %s\n", settings.randomData.estimatedTime(Setup.settings.message_size,
+				Setup.settings.block_size, Setup.settings.padding_blocks, 5));
 		
-		settings.randomData.generateKey(Setup.settings.message_size, Setup.settings.block_size, Setup.settings.padding_blocks);
+		settings.randomData.generateKey(Setup.settings.message_size, Setup.settings.block_size,
+				Setup.settings.padding_blocks);
 		Encry_Decry.encrypt(Setup.settings.key, Setup.settings.message);
 		if (settings.preferences.store_data) {
 			Filer.save.message();

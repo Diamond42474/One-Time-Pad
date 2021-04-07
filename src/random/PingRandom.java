@@ -5,7 +5,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 public class PingRandom extends RandomData {
-	private String[] addresses = {"facebook.com","google.com","twitter.com","github.com","stackoverflow.com","netflix.com","amazon.com"};
+	private String[] addresses = {"google.com","facebook.com","twitter.com","github.com","stackoverflow.com","amazon.com"};
 	private final int TIMEOUT = 500;
 
 	public PingRandom() {
@@ -41,6 +41,8 @@ public class PingRandom extends RandomData {
 				long stop = System.nanoTime();
 				long ellapsedTime = stop-start;
 				return ellapsedTime;
+			}else {
+				System.out.println(ip+" timed out");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
