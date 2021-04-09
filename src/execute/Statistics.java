@@ -31,7 +31,7 @@ public class Statistics {
 		}
 
 		try {
-			ImageIO.write(image, "jpg", new File(Setup.settings.dir + name + ".jpg"));
+			ImageIO.write(image, "jpg", new File(Settings.dir + name + ".jpg"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -40,8 +40,8 @@ public class Statistics {
 
 	public static void general() {
 		int[] stats = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
-		for (int i = 0; i < Setup.settings.key.length(); i++) {
-			char c = Setup.settings.key.charAt(i);
+		for (int i = 0; i < Settings.key.length(); i++) {
+			char c = Settings.key.charAt(i);
 			switch (c) {
 			case '0':
 				stats[0]++;
@@ -75,7 +75,7 @@ public class Statistics {
 				break;
 			}
 		}
-		int kz = Setup.settings.key.length();
+		int kz = Settings.key.length();
 		System.out.printf("0: %d\n1: %d\n2: %d\n3: %d\n4: %d\n5: %d\n6: %d\n7: %d\n8: %d\n9: %d\n", stats[0], stats[1],
 				stats[2], stats[3], stats[4], stats[5], stats[6], stats[7], stats[8], stats[9]);
 		System.out.print("\n");
@@ -95,7 +95,7 @@ public class Statistics {
 		
 		for(int i = 0;i<kz;) {
 			for(int ie = 0;ie<100 && i<kz;ie++) {
-				System.out.print(Setup.settings.key.charAt(i));
+				System.out.print(Settings.key.charAt(i));
 				i++;
 			}
 			System.out.print("\n");
@@ -103,16 +103,16 @@ public class Statistics {
 	}
 
 	public static void simpleDisplay() {
-		System.out.printf("\nKey:\nSize: %d\nPadding: %d\nBlock Size: %d\n\n%s\n", Setup.settings.key.length(),
-				Setup.settings.padding_blocks, Setup.settings.block_size, Processors.formatting(Setup.settings.key));
+		System.out.printf("\nKey:\nSize: %d\nPadding: %d\nBlock Size: %d\n\n%s\n", Settings.key.length(),
+				Settings.padding_blocks, Settings.block_size, Processors.formatting(Settings.key));
 	}
 	public static void keyAndMessageFormatted() {
-		System.out.printf("\nKey:\n%s\n",Processors.formatting(Setup.settings.key));
-		if(Setup.settings.enc_message.length()>0) {
-			System.out.printf("Encrypted Message:\n%s\n",Processors.formatting(Setup.settings.enc_message));
+		System.out.printf("\nKey:\n%s\n",Processors.formatting(Settings.key));
+		if(Settings.enc_message.length()>0) {
+			System.out.printf("Encrypted Message:\n%s\n",Processors.formatting(Settings.enc_message));
 		}
 	}
 	public static void decryptedMessage() {
-		System.out.printf("Decrypted Message:\n%s\n",Setup.settings.message);
+		System.out.printf("Decrypted Message:\n%s\n",Settings.message);
 		}
 }

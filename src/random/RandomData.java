@@ -1,6 +1,6 @@
 package random;
 
-import execute.Setup;
+import execute.Settings;
 
 public abstract class RandomData {
 	public void generateKey(int message_size, int block_size, int padding_blocks) {
@@ -18,7 +18,7 @@ public abstract class RandomData {
 			rawKey = rawKey.substring(rawKey.length() - keySize);
 		}
 
-		Setup.settings.key = rawKey;
+		Settings.key = rawKey;
 	}
 
 	protected long randomNumber() {
@@ -45,7 +45,6 @@ public abstract class RandomData {
 		int seconds = (int) (time / 1000) % 60 ;
 		int minutes = (int) ((time / (1000*60)) % 60);
 		int hours   = (int) ((time / (1000*60*60)) % 24);
-		//return (long) (ellapsedTimePerUnit * roundsNeeded) / 1000; // Time to complete in seconds
 		return String.format("%dh:%dm:%ds",hours,minutes,seconds);
 	}
 }

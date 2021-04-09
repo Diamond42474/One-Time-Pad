@@ -1,6 +1,6 @@
 package file;
 
-import execute.Setup;
+import execute.Settings;
 
 /**
  * 
@@ -12,9 +12,9 @@ public class Processors {
 	public static String formatting(String txt) {
 		String out = "";
 		int origional_key_length = txt.length();
-		for (int i = 0; i < origional_key_length / Setup.settings.block_size; i++) {
-			out += txt.substring(0, Setup.settings.block_size) + "	";
-			txt = txt.substring(Setup.settings.block_size);
+		for (int i = 0; i < origional_key_length / Settings.block_size; i++) {
+			out += txt.substring(0, Settings.block_size) + "	";
+			txt = txt.substring(Settings.block_size);
 		}
 		return out;
 	}

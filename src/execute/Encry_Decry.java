@@ -78,7 +78,7 @@ public class Encry_Decry {
 			out += toStringConv(add);
 		}
 		//System.out.println("Message Length: " + out.length() + "\n" + Processors.formatting(out));
-		Setup.settings.enc_message = out;
+		Settings.enc_message = out;
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class Encry_Decry {
 			out += alphabet.get(subtract(k, m));
 		}
 		//System.out.println(out);
-		Setup.settings.message = out;
+		Settings.message = out;
 	}
 
 	/**

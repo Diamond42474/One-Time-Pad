@@ -1,7 +1,7 @@
 package app;
 
+import dialogue.Dialogue;
 import execute.Encry_Decry;
-import execute.Setup;
 
 public class OneTimePad {
 
@@ -18,6 +18,6 @@ public class OneTimePad {
 				+ 			"	\\\\______________//              |__|                 ||\n"
 				+ 			"\n	By: Diamond42474\n\n\n");
 		 Encry_Decry.Setup(); 
-		 Setup.dialog();
+		 Dialogue.Start();
 	}
 }
