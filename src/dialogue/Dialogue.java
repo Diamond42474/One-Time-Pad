@@ -119,8 +119,9 @@ public class Dialogue {
 			Settings.randomData.generateKey(Settings.message_size, Settings.block_size, Settings.padding_blocks);
 			Encry_Decry.encrypt(Settings.key, Settings.message);
 			if (Settings.preferences.store_data) {
-				Filer.save.message();
-				Filer.save.key();
+				Filer.save.savePair();
+				//Filer.save.message();
+				//Filer.save.key();
 			}
 			Statistics.general();
 			Statistics.keyAndMessageFormatted();
@@ -137,7 +138,7 @@ public class Dialogue {
 			Settings.key = Processors.unformat(scan.nextLine());
 			Encry_Decry.decrypt(Settings.key, Settings.enc_message);
 			if (Settings.preferences.store_data) {
-				Filer.save.txt_message();
+				//Filer.save.txt_message();
 			}
 			Statistics.keyAndMessageFormatted();
 			Statistics.decryptedMessage();

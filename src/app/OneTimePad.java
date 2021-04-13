@@ -16,7 +16,8 @@ public class OneTimePad {
 				+ 			"	||              ||              |  |                 ||\n"
 				+ 			"	||              ||              |  |                 ||\n"
 				+ 			"	\\\\______________//              |__|                 ||\n"
-				+ 			"\n	By: Diamond42474\n\n\n");
+				+ 			"\n	By: Diamond42474\n");
+		System.out.println("	Make sure to run program as 'sudo' if you are wanting to run PingRandom on Linux\n\n");
 		 Encry_Decry.Setup(); 
 		 Dialogue.Start();
 	}
