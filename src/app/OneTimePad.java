@@ -6,6 +6,7 @@ import execute.Encry_Decry;
 public class OneTimePad {
 
 	public static void main(String[] args) {
+		//Welcome Message
 		System.out.println(	"	  ______________        ____________________         ____________\n"
 				+ 			"	//              \\\\     |____________________|        ||        \\\\\n"
 				+			"	||              ||              |  |                 ||         ||\n"
@@ -18,6 +19,7 @@ public class OneTimePad {
 				+ 			"	\\\\______________//              |__|                 ||\n"
 				+ 			"\n	By: Diamond42474\n");
 		System.out.println("	Make sure to run program as 'sudo' if you are wanting to run PingRandom on Linux\n\n");
+		//Run Application
 		 Encry_Decry.Setup(); 
 		 Dialogue.Start();
 	}
