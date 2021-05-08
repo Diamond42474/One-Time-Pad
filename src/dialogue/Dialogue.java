@@ -106,6 +106,7 @@ public class Dialogue {
 			System.out.print(Settings.formatting.sep);
 			System.out.println("Message: ");
 			Settings.message = scan.nextLine();
+			System.out.println(Settings.message);
 			Settings.message_size = Settings.message.length() * 2;
 
 			System.out.println("Block Size: ");
@@ -140,7 +141,7 @@ public class Dialogue {
 			if (Settings.preferences.store_data) {
 				//Filer.save.txt_message();
 			}
-			Statistics.keyAndMessageFormatted();
+			//Statistics.keyAndMessageFormatted();
 			Statistics.decryptedMessage();
 		}
 	}

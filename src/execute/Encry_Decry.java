@@ -52,6 +52,36 @@ public class Encry_Decry {
 		alphabet.put(38, "8");
 		alphabet.put(39, "9");
 		alphabet.put(40, ",");
+		alphabet.put(41, "*");
+		alphabet.put(42, "a");
+		alphabet.put(43, "b");
+		alphabet.put(44, "c");
+		alphabet.put(45, "d");
+		alphabet.put(46, "e");
+		alphabet.put(47, "f");
+		alphabet.put(48, "g");
+		alphabet.put(49, "h");
+		alphabet.put(50, "i");
+		alphabet.put(51, "j");
+		alphabet.put(52, "k");
+		alphabet.put(53, "l");
+		alphabet.put(54, "m");
+		alphabet.put(55, "n");
+		alphabet.put(56, "o");
+		alphabet.put(57, "p");
+		alphabet.put(58, "q");
+		alphabet.put(59, "r");
+		alphabet.put(60, "s");
+		alphabet.put(61, "t");
+		alphabet.put(62, "u");
+		alphabet.put(63, "v");
+		alphabet.put(64, "w");
+		alphabet.put(65, "x");
+		alphabet.put(66, "y");
+		alphabet.put(67, "z");
+		alphabet.put(68, "-");
+		alphabet.put(69, "/");
+		alphabet.put(70, "'");
 		List<Integer> keys = new ArrayList<>(alphabet.keySet());
 		for (int i = 0; i < keys.size(); i++) {
 			ialphabet.put(alphabet.get(keys.get(i)), keys.get(i));
@@ -67,13 +97,16 @@ public class Encry_Decry {
 	 */
 	public static void encrypt(String key, String message) {
 		String out = "";
-		message = message.toUpperCase();
+		//message = message.toUpperCase();
 		while (message.length() / 2 < key.length()) {
 			message = message + " ";
 		}
 		for (int i = 0; i < key.length() / 2; i++) {
 			int charK = Integer.parseInt(key.substring(i * 2, (i * 2) + 2));
-			int charM = ialphabet.get(message.charAt(i) + "");
+			int charM = 41;
+			if(ialphabet.containsKey(message.charAt(i) + "")) {
+				charM = ialphabet.get(message.charAt(i) + "");
+			}
 			int add = charK + charM;
 			out += toStringConv(add);
 		}
