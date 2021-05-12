@@ -43,7 +43,6 @@ public class Filer {
 					out += myReader.nextLine();
 				}
 				myReader.close();
-				System.out.println(out);
 				Settings.message = out;
 			} catch (FileNotFoundException e) {
 				System.out.println("An error occurred.");
@@ -51,7 +50,7 @@ public class Filer {
 			}
 		}
 
-		public static void message(String dir) {
+		public static void enc_message(String dir) {
 			String out = "";
 			try {
 				File file = new File(dir);
@@ -60,7 +59,8 @@ public class Filer {
 					out += myReader.nextLine();
 				}
 				myReader.close();
-				System.out.println(out);
+				//System.out.println(out);
+				//System.out.println("Message Size: "+out.length());
 				Settings.enc_message = Processors.unformat(out);
 			} catch (FileNotFoundException e) {
 				System.out.println("An error occurred.");
@@ -77,7 +77,8 @@ public class Filer {
 					out += myReader.nextLine();
 				}
 				myReader.close();
-				System.out.println(out);
+				//System.out.println(out);
+				//System.out.println("Message Size: "+out.length());
 				Settings.key = Processors.unformat(out);
 			} catch (FileNotFoundException e) {
 				System.out.println("An error occurred.");

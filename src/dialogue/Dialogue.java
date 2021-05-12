@@ -104,8 +104,12 @@ public class Dialogue {
 		 */
 		private static void encryptMessage() {
 			System.out.print(Settings.formatting.sep);
-			System.out.println("Message: ");
+			System.out.println("Message: (Note: -f followed by directory to read from a file)");
 			Settings.message = scan.nextLine();
+			if(Settings.message.startsWith("-f")) {
+				Settings.message = Settings.message.replace("-f ", "");
+				Filer.read.txt_message(Settings.message);
+			}
 			System.out.println(Settings.message);
 			Settings.message_size = Settings.message.length() * 2;
 
@@ -133,10 +137,23 @@ public class Dialogue {
 		 */
 		private static void decryptMessage() {
 			System.out.print(Settings.formatting.sep);
-			System.out.println("Encrypted Message: ");
-			Settings.enc_message = Processors.unformat(scan.nextLine());
-			System.out.println("Key: ");
-			Settings.key = Processors.unformat(scan.nextLine());
+			
+			System.out.println("Encrypted Message: (Note: -f  followed by directory to read from a file)");
+			Settings.enc_message = scan.nextLine();
+			if(Settings.enc_message.startsWith("-f")) {
+				Settings.enc_message = Settings.enc_message.replace("-f ", "");
+				Filer.read.enc_message(Settings.enc_message);
+			}
+			Settings.enc_message = Processors.unformat(Settings.enc_message);
+			
+			System.out.println("Key: (Note: -f  followed by directory to read from a file)");
+			Settings.key = scan.nextLine();
+			if(Settings.key.startsWith("-f")) {
+				Settings.key = Settings.key.replace("-f ", "");
+				Filer.read.key(Settings.key);
+			}
+			Settings.key = Processors.unformat(Settings.key);
+			
 			Encry_Decry.decrypt(Settings.key, Settings.enc_message);
 			if (Settings.preferences.store_data) {
 				//Filer.save.txt_message();
